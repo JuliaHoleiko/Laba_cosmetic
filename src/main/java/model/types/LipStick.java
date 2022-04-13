@@ -1,7 +1,7 @@
-package model.types;
+package main.java.model.types;
 
-import model.Assignment;
-import model.Cosmetic;
+import main.java.model.Assignment;
+import main.java.model.Cosmetic;
 
 public class LipStick extends Cosmetic {
     private String color;

@@ -1,14 +1,11 @@
-package com.company;
-
-
-
-import manager.impl.ShopManager;
-import model.Assignment;
-import model.Cosmetic;
-import model.types.Cream;
-import model.types.LipStick;
-import model.types.Perfume;
-import model.types.SortType;
+package main.java.com.company;
+import main.java.manager.impl.ShopManager;
+import main.java.model.Assignment;
+import main.java.model.Cosmetic;
+import main.java.model.types.Cream;
+import main.java.model.types.LipStick;
+import main.java.model.types.Perfume;
+import main.java.model.types.SortType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,12 +51,6 @@ public class Main {
 
         System.out.println();
         shop.searchByBudget(50);
-
-
-
-
-
-
 
     }
 }

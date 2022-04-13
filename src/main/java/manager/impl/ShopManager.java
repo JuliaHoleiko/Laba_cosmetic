@@ -1,8 +1,8 @@
-package manager.impl;
+package main.java.manager.impl;
 
-import manager.IShopManager;
-import model.Cosmetic;
-import model.types.SortType;
+import main.java.manager.IShopManager;
+import main.java.model.Cosmetic;
+import main.java.model.types.SortType;
 
 import java.util.*;
 import java.util.stream.Collectors;

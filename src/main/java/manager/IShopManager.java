@@ -1,7 +1,7 @@
-package manager;
+package main.java.manager;
 
-import model.Cosmetic;
-import model.types.SortType;
+import main.java.model.Cosmetic;
+import main.java.model.types.SortType;
 
 import java.util.List;
 import java.util.Map;
