@@ -1,10 +1,13 @@
-package main.java.manager.impl;
+package manager.impl;
 
-import main.java.manager.IShopManager;
-import main.java.model.Cosmetic;
-import main.java.model.types.SortType;
+import manager.IShopManager;
+import model.Cosmetic;
+import model.types.SortType;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ShopManager implements IShopManager{
@@ -81,6 +84,7 @@ public class ShopManager implements IShopManager{
                         (o1, o2)-> o1, LinkedHashMap:: new));
 
     }
+
 
     @Override
     public void searchByBudget(int budget) {

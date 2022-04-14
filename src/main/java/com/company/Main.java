@@ -1,11 +1,11 @@
-package main.java.com.company;
-import main.java.manager.impl.ShopManager;
-import main.java.model.Assignment;
-import main.java.model.Cosmetic;
-import main.java.model.types.Cream;
-import main.java.model.types.LipStick;
-import main.java.model.types.Perfume;
-import main.java.model.types.SortType;
+package com.company;
+import manager.impl.ShopManager;
+import model.Assignment;
+import model.Cosmetic;
+import model.types.Cream;
+import model.types.LipStick;
+import model.types.Perfume;
+import model.types.SortType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +28,6 @@ public class Main {
         ShopManager shop = new ShopManager();
         shop.addProduct(eclat,40);
         shop.addProduct(my_way,12);
-
         shop.addProduct(cream1, 39);
         shop.addProduct(lipStick,21);
         shop.addProduct(cream1, 39);
@@ -38,7 +37,6 @@ public class Main {
 
         shop.showAssortment();
         shop.deleteProductByCount(cream1, 70);
-        System.out.println();
         System.out.println();
         shop.showAssortment();
 

@@ -1,4 +1,4 @@
-package main.java.model.types;
+package model.types;
 
 public enum SortType {
     Ascending,
