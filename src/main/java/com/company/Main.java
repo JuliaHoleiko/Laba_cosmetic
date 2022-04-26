@@ -26,17 +26,18 @@ public class Main {
         LipStick lipStick = new LipStick("lip gloss", "Maybelline", 45, 150, Assignment.makeup, "red");
 
         ShopManager shop = new ShopManager();
-        shop.addProduct(eclat,40);
-        shop.addProduct(my_way,12);
-        shop.addProduct(cream1, 39);
-        shop.addProduct(lipStick,21);
-        shop.addProduct(cream1, 39);
+        shop.addProduct(eclat,1);
+        shop.addProduct(my_way,2);
+        shop.addProduct(cream1, 3);
+        shop.addProduct(lipStick,4);
+        /*shop.addProduct(cream1, 39);
         shop.addProduct(cream2, 36);
         shop.addProduct(cream3, 2);
         shop.addProduct(paco_1million, 3);
 
         shop.showAssortment();
         shop.deleteProductByCount(cream1, 70);
+        shop.deleteProduct(cream3);*/
         System.out.println();
         shop.showAssortment();
 
@@ -45,10 +46,13 @@ public class Main {
         shop.sortByName(SortType.Descending).forEach(((k,v)-> System.out.println(k.getName() + " ,count = "+ v)));
 
         System.out.println();
-        shop.sortByCount(SortType.Ascending).forEach(((k,v)-> System.out.println(k.getName() + " ,count = "+ v)));
+        shop.sortByCount(SortType.Descending).forEach(((k,v)-> System.out.println(k.getName() + " ,count = "+ v)));
 
         System.out.println();
-        shop.searchByBudget(50);
+        shop.searchByBudget(200).forEach(((k,v)-> System.out.println(k.getName() + " ,count = "+ v)));
+        System.out.print("hyi \n" + System.lineSeparator());
+
+
 
     }
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ShopManager implements IShopManager{
-    private Map <Cosmetic, Integer> mapOfExistingProducts = new HashMap<>();
+    Map <Cosmetic, Integer> mapOfExistingProducts = new HashMap<>();
 
     @Override
     public void deleteProductByCount(Cosmetic product, int count){
@@ -26,7 +26,7 @@ public class ShopManager implements IShopManager{
     }
 
     @Override
-    public void deleteProduct(Cosmetic product, int count){
+    public void deleteProduct(Cosmetic product){
         if(mapOfExistingProducts == null)
             System.out.println("Your list of product is empty");
         else if (mapOfExistingProducts.keySet().contains(product)){
@@ -87,14 +87,21 @@ public class ShopManager implements IShopManager{
 
 
     @Override
-    public void searchByBudget(int budget) {
+    public Map<Cosmetic, Integer> searchByBudget(int budget) {
         Map<Cosmetic, Integer> mapByBudget =  mapOfExistingProducts.entrySet().stream()
                 .filter(x-> x.getKey().getPriceInUah() <= budget)
                 .collect(Collectors.toMap(a-> a.getKey(), a->a.getValue()));
-        if (mapByBudget.isEmpty())
+        if (mapByBudget.isEmpty()){
             System.out.println("You can't buy any product");
-        else  mapByBudget.forEach((k,v)-> System.out.println(k.getName()+ " "+ k.getPriceInUah()));
+
+        }
+        return mapByBudget;
     }
+
+    public void deleteManager(){
+        mapOfExistingProducts.clear();
+    }
+
 
 
 
