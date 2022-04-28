@@ -7,22 +7,18 @@ import model.types.LipStick;
 import model.types.Perfume;
 import model.types.SortType;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayOutputStream;
-
 import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShopManagerTest {
-    static ShopManager managerTest = new ShopManager();
-    static Perfume eclat = new Perfume("Eclat","Lanvin", 500, 1000, Assignment.fragrance, "roses", "flowers" );
-    static Cream cream1 = new Cream("la creme","Versace", 200,120, Assignment.skincare, "dry");
-    static LipStick lipStick = new LipStick("lip gloss", "Maybelline", 45, 150, Assignment.makeup, "red");
-    static Perfume my_way = new Perfume("My way Armani","Armani",  500, 1350, Assignment.fragrance, "roses", "flowers" );
+    final static ShopManager managerTest = new ShopManager();
+    final static Perfume eclat = new Perfume("Eclat","Lanvin", 500, 1000, Assignment.fragrance, "roses", "flowers" );
+    final static Cream cream1 = new Cream("la creme","Versace", 200,120, Assignment.skincare, "dry");
+    final static LipStick lipStick = new LipStick("lip gloss", "Maybelline", 45, 150, Assignment.makeup, "red");
+    final static Perfume my_way = new Perfume("My way Armani","Armani",  500, 1350, Assignment.fragrance, "roses", "flowers" );
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     @BeforeEach
       public void addCosmeticToMap (){
@@ -34,7 +30,7 @@ class ShopManagerTest {
     }
     @AfterEach
     public void deleteTestManager(){
-        managerTest.deleteManager();
+        managerTest.getMapOfExistingProducts().clear();
     }
 
 
@@ -42,7 +38,9 @@ class ShopManagerTest {
     void addProduct() {
         Map<Cosmetic, Integer> expectedMap = new HashMap<>();
 
-        Map<Cosmetic, Integer> actual = managerTest.mapOfExistingProducts;
+
+        Map<Cosmetic, Integer> actual = managerTest.getMapOfExistingProducts();
+
         expectedMap.put(eclat,1);
         expectedMap.put(cream1,2);
         expectedMap.put(lipStick,3);
@@ -54,6 +52,7 @@ class ShopManagerTest {
         assertEquals(4, actual.size());
         expectedMap.replace(my_way, 9);
         assertEquals(actual, expectedMap);
+
 
     }
     @Test
@@ -120,7 +119,7 @@ class ShopManagerTest {
     @Test
     void deleteProduct(){
         managerTest.deleteProduct(cream1);
-        Map<Cosmetic, Integer> actual = managerTest.mapOfExistingProducts;
+        Map<Cosmetic, Integer> actual = managerTest.getMapOfExistingProducts();
         Map<Cosmetic, Integer> expected = new HashMap<>();
         expected.put(eclat,1);
         expected.put(lipStick,3);
@@ -132,27 +131,28 @@ class ShopManagerTest {
     @Test
     void deleteProductByCount(){
         managerTest.deleteProductByCount(my_way, 2);
-        Map<Cosmetic, Integer> actual = managerTest.mapOfExistingProducts;
+        Map<Cosmetic, Integer> actual = managerTest.getMapOfExistingProducts();
         Map<Cosmetic, Integer> expected = new HashMap<>();
         expected.put(eclat,1);
         expected.put(lipStick,3);
         expected.put(cream1,2);
         expected.put(my_way,2);
         assertEquals(actual, expected);
-
+        managerTest.deleteProductByCount(my_way,9);
+        expected.clear();
+        expected.put(eclat,1);
+        expected.put(lipStick,3);
+        expected.put(cream1,2);
+        assertEquals(actual, expected);
 
     }
     @Test
-    void showAssortment (){
+    void deleteManager(){
+        managerTest.deleteManager();
+        Map<Cosmetic, Integer> actual = managerTest.getMapOfExistingProducts();
+        Map<Cosmetic, Integer> expected = new HashMap<>();
+        assertEquals(actual, expected);
 
-
-        String expected = "lip gloss,brand='Maybelline, volumeInMl=45, priceInUah=150, assignment=makeup count = 3" + System.lineSeparator()+
-                    "My way Armani,brand='Armani, volumeInMl=500, priceInUah=1350, assignment=fragrance count = 4" +System.lineSeparator()+
-                    "Eclat,brand='Lanvin, volumeInMl=500, priceInUah=1000, assignment=fragrance count = 1" +System.lineSeparator()+
-                    "la creme,brand='Versace, volumeInMl=200, priceInUah=120, assignment=skincare count = 2" + System.lineSeparator();
-
-        managerTest.showAssortment();
-        assertEquals(expected,  outContent.toString().trim());
     }
 
 

@@ -1,0 +1,12 @@
+Cream:
+name ,brand  ,volumeInMl ,priceInUah ,assignment, type of skin, count
+la creme, Versace, 200, 120, skincare, dry, 2
+Effaclar , La Roche-Posay, 200, 300, skincare, dry, 5
+collagen cream, Bioderma, 200, 120, skincare, dry, 7
+LipStick:
+name ,brand  ,volumeInMl ,priceInUah ,assignment, color, count
+lip gloss, Maybelline, 45, 150, makeup, red, 3
+Perfume:
+name ,brand  ,volumeInMl ,priceInUah ,assignment, notes, type of scent, count
+My way Armani, Armani, 500, 1350, fragrance, roses, flowers, 4
+Eclat, Lanvin, 500, 1000, fragrance, roses, flowers, 1
